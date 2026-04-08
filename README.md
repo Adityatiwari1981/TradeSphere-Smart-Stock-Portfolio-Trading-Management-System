@@ -8,7 +8,7 @@ tracking investments, and simulating trading activities.
 
 <hr>
 
-<h2>📌 Project Overview</h2>
+<h2>📌 Project Overview  </h2>
 
 <p>
 TradeSphere is a modern web-based stock portfolio and trading management system designed
@@ -240,7 +240,7 @@ You will now see the **TradeSphere Dashboard Interface**.
 
 <ul>
 <li>Aditya Tiwari</li>
-<li>Manju</li>
+<li>Manju Rajpoot</li>
 <li>Priya Gupta</li>
 <li>Lovepreet Singh</li>
 </ul>
