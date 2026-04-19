@@ -1,42 +1,103 @@
 import React from "react";
-
 function Hero() {
+  const plans = [
+    {
+      name: "Premium",
+      price: "199",
+      features: [
+        "50+ Real-time Stock Filters",
+        "3 Personal Watchlists",
+        "Daily Market Summary",
+        "Basic Portfolio Tracker",
+        "Email Support",
+      ],
+    },
+    {
+      name: "Pro",
+      price: "599",
+      features: [
+        "Everything in Basic +",
+        "Unlimited Watchlists & Alerts",
+        "Advanced Charting Tools",
+        "Sector Performance Insights",
+        "Priority Email Support",
+        "Ad-Free Experience",
+      ],
+      highlight: true,
+    },
+    {
+      name: "Club",
+      price: "1099",
+      features: [
+        "Everything in Growth +",
+        "Expert Market Insights",
+        "Beta Access to New Features",
+        "Quarterly Portfolio Review",
+        "Direct Chat Support",
+        "Exclusive Webinars Access",
+      ],
+    },
+  ];
+
   return (
     <div className="container">
-      <div className="row p-5 mt-5 border-bottom text-center">
-        <h1>Pricing</h1>
-        <h3 className="text-muted mt-3 fs-5">
-          Free equity investments and flat ₹20 traday and F&O trades
-        </h3>
-      </div>
       <div className="row p-5 mt-5 text-center">
-        <div className="col-4 p-4">
-          <img src="media/images/pricingEquity.svg" />
-          <h1 className="fs-3">Free equity delivery</h1>
-          <p className="text-muted">
-            All equity delivery investments (NSE, BSE), are absolutely free — ₹
-            0 brokerage.
-          </p>
-        </div>
-        <div className="col-4 p-4">
-          <img src="media/images/intradayTrades.svg" />
-          <h1 className="fs-3">Intraday and F&O trades</h1>
-          <p className="text-muted">
-            Flat Rs. 20 or 0.03% (whichever is lower) per executed order on
-            intraday trades across equity, currency, and commodity trades.
-          </p>
-        </div>
-        <div className="col-4 p-4">
-          <img src="media/images/pricingEquity.svg" />
-          <h1 className="fs-3">Free direct MF</h1>
-          <p className="text-muted">
-            All direct mutual fund investments are absolutely free — ₹ 0
-            commissions & DP charges.
-          </p>
-        </div>
+        <h1 className="display-5 fw-bold">
+          Choose The Plan That Is Right For You
+        </h1>
+        <p className="text-muted fs-5">
+          Transparent pricing for all your investment needs.
+        </p>
+      </div>
+      <div className="row mb-5">
+        {plans.map((plan, index) => (
+          <div className="col-lg-4 col-md-6 mb-4" key={index}>
+            <div
+              className={`card h-100 shadow-sm ${plan.highlight ? "border-primary" : ""}`}
+              style={
+                plan.highlight
+                  ? { backgroundColor: "#fffdf5", border: "2px solid #ff9800" }
+                  : {}
+              }
+            >
+              {plan.highlight && (
+                <div className="text-center bg-warning text-white p-1 fw-bold">
+                  Popular
+                </div>
+              )}
+
+              <div className="card-body p-4">
+                <h2 className="fw-bold">{plan.name}</h2>
+                <p className="text-muted">
+                  For serious investors who want more.
+                </p>
+                <h3 className="my-4 fw-bold">
+                  ₹{plan.price}
+                  <span className="fs-6 text-muted">/ year</span>
+                </h3>
+                <button className="btn btn-primary w-100 mb-4 py-2 fw-bold">
+                  Subscribe Now
+                </button>
+
+                <ul className="list-unstyled text-start">
+                  {plan.features.map((feat, i) => (
+                    <li key={i} className="mb-2">
+                      <i className="fa fa-check text-success me-2"></i> {feat}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="card-footer bg-transparent border-0 text-center pb-4 text-muted small">
+                For any query Contact: +91 7900404660
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="text-center mb-5">
+        <button className="btn btn-primary px-5 py-2">Compare Plans</button>
       </div>
     </div>
   );
 }
-
 export default Hero;
