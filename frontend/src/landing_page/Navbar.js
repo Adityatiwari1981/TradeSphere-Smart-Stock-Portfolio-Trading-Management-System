@@ -1,125 +1,131 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const dropdownRef = useRef();
 
   const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
+  const [preview, setPreview] = useState(null);
 
   const primeBlue = "#007bff";
 
-  // 🔹 Load user from localStorage
+  // Load user safely
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    setUser(storedUser);
+    try {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      if (storedUser) setUser(storedUser);
+    } catch (err) {
+      console.error("Invalid user data in localStorage");
+    }
   }, []);
 
-  // 🔹 Close dropdown on outside click
+  // Close dropdown on outside click + ESC key
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setOpen(false);
       }
     };
+
+    const handleEsc = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEsc);
+    };
   }, []);
 
-  const firstLetter = user?.name?.charAt(0).toUpperCase();
+  const firstLetter = user?.name?.charAt(0)?.toUpperCase() || "U";
 
-  // 🔹 Upload Photo
-  const handlePhotoChange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append("image", file);
-
-    const token = localStorage.getItem("token");
-
-    try {
-      const res = await fetch("http://localhost:5000/api/auth/upload-photo", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
-
-      const data = await res.json();
-
-      const updatedUser = {
-        ...user,
-        profilePic: data.profilePic,
-      };
-
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-      setUser(updatedUser); // ✅ UI refresh without reload
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // 🔹 Logout
+  // Logout
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-
-    setUser(null); // ✅ IMPORTANT
-    setOpen(false); // dropdown band karo
-
+    setUser(null);
+    setOpen(false);
     navigate("/");
   };
+
+  // Handle profile image preview (frontend only)
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
+  const navItems = ["Home", "About", "Product", "Pricing", "Support"];
 
   return (
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="navbar navbar-expand-lg border-bottom sticky-top bg-primary shadow-sm"
+      className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm"
     >
       <div className="container py-1">
         {/* Logo */}
-        <motion.a
-          whileHover={{ scale: 1.05 }}
-          className="navbar-brand"
-          href="/"
-        >
+        <Link className="navbar-brand" to="/">
           <img
-            src="/media/images/logo.jpeg" // ✅ FIXED PATH
+            src="/media/images/logo.jpeg"
             alt="Logo"
-            style={{ width: "160px", borderRadius: "8px" }}
+            style={{ width: "150px", borderRadius: "6px" }}
           />
-        </motion.a>
+        </Link>
 
-        <div className="collapse navbar-collapse">
+        {/* Toggle */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Links */}
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto align-items-center">
-            {["Home", "About", "Product", "Pricing", "Support"].map(
-              (item, index) => (
-                <li key={index} className="nav-item px-2">
-                  <a
-                    className="nav-link fw-semibold text-dark"
-                    href={`/${item.toLowerCase()}`}
+            {navItems.map((item, index) => {
+              const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+              const isActive = location.pathname === path;
+
+              return (
+                <li key={index} className="nav-item">
+                  <Link
+                    className={`nav-link fw-semibold ${
+                      isActive ? "text-warning" : "text-white"
+                    }`}
+                    to={path}
                   >
                     {item}
-                  </a>
+                  </Link>
                 </li>
-              ),
-            )}
+              );
+            })}
 
-            {/* ✅ Logged in */}
+            {/* Logged in */}
             {user ? (
               <div className="position-relative ms-3" ref={dropdownRef}>
                 {/* Avatar */}
                 <div
-                  onClick={() => setOpen(!open)}
+                  onClick={() => setOpen((prev) => !prev)}
                   style={{
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
-                    backgroundColor: "#fff",
+                    background: "#fff",
                     color: primeBlue,
                     display: "flex",
                     alignItems: "center",
@@ -129,10 +135,16 @@ function Navbar() {
                     overflow: "hidden",
                   }}
                 >
-                  {user?.profilePic ? (
+                  {preview || user?.profilePic ? (
                     <img
-                      src={`http://localhost:5000/uploads/${user.profilePic}`}
+                      src={
+                        preview ||
+                        `http://localhost:5000/uploads/${user.profilePic}`
+                      }
                       alt="profile"
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                      }}
                       style={{
                         width: "100%",
                         height: "100%",
@@ -146,112 +158,74 @@ function Navbar() {
 
                 {/* Dropdown */}
                 {open && (
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
                     style={{
                       position: "absolute",
-                      top: "50px",
+                      top: "110%",
                       right: 0,
                       background: "#fff",
                       borderRadius: "10px",
                       boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
                       padding: "8px 0",
                       minWidth: "180px",
+                      zIndex: 2000,
                     }}
                   >
-                    {[
-                      {
-                        label: "Dashboard",
-                        action: () => navigate("/dashboard"),
-                      },
-                      {
-                        label: "Change Password",
-                        action: () => navigate("/change-password"),
-                      },
-                    ].map((item, index) => (
-                      <div
-                        key={index}
-                        onClick={item.action}
-                        style={{
-                          padding: "10px 15px",
-                          cursor: "pointer",
-                          transition: "0.2s",
-                        }}
-                        onMouseEnter={(e) =>
-                          (e.target.style.background = "#f5f5f5")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.target.style.background = "transparent")
-                        }
-                      >
-                        {item.label}
-                      </div>
-                    ))}
-
-                    {/* Change Photo */}
-                    <label
-                      style={{
-                        padding: "10px 15px",
-                        display: "block",
-                        cursor: "pointer",
+                    <div
+                      className="dropdown-item-custom"
+                      onClick={() => {
+                        navigate("/dashboard");
+                        setOpen(false);
                       }}
-                      onMouseEnter={(e) =>
-                        (e.target.style.background = "#f5f5f5")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.target.style.background = "transparent")
-                      }
                     >
+                      Dashboard
+                    </div>
+
+                    <div
+                      className="dropdown-item-custom"
+                      onClick={() => {
+                        navigate("/change-password");
+                        setOpen(false);
+                      }}
+                    >
+                      Change Password
+                    </div>
+
+                    <label className="dropdown-item-custom">
                       Change Photo
                       <input
                         type="file"
-                        accept="image/*"
                         hidden
-                        onChange={handlePhotoChange}
+                        accept="image/*"
+                        onChange={handleImageChange}
                       />
                     </label>
 
-                    {/* Divider */}
-                    <div
-                      style={{
-                        height: "1px",
-                        background: "#eee",
-                        margin: "5px 0",
-                      }}
-                    />
+                    <div className="dropdown-divider"></div>
 
-                    {/* Logout */}
                     <div
+                      className="dropdown-item-custom text-danger"
                       onClick={handleLogout}
-                      style={{
-                        padding: "10px 15px",
-                        cursor: "pointer",
-                        color: "red",
-                        fontWeight: "500",
-                      }}
-                      onMouseEnter={(e) =>
-                        (e.target.style.background = "#ffecec")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.target.style.background = "transparent")
-                      }
                     >
                       Logout
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </div>
             ) : (
-              <li className="nav-item ms-lg-3">
-                <a
-                  className="nav-link btn text-white px-4"
+              <li className="nav-item ms-3">
+                <Link
+                  to="/signup"
+                  className="btn text-white px-4"
                   style={{
                     backgroundColor: primeBlue,
                     borderRadius: "20px",
                   }}
-                  href="/signup"
                 >
                   Signup
-                </a>
+                </Link>
               </li>
             )}
           </ul>

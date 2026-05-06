@@ -2,8 +2,8 @@
 <h3 align="center">Smart Stock Portfolio & Trading Management System</h3>
 
 <p align="center">
-A Full Stack Web Application developed using MERN Stack for managing stock portfolios,
-tracking investments, and simulating trading activities.
+A Full Stack MERN Web Application for managing stock portfolios, tracking investments,
+and simulating real-time trading activities with secure authentication.
 </p>
 
 <hr>
@@ -11,52 +11,39 @@ tracking investments, and simulating trading activities.
 <h2>📌 Project Overview</h2>
 
 <p>
-TradeSphere is a modern web-based stock portfolio and trading management system designed
-to help users manage their investments efficiently. The system provides an interactive
-dashboard where users can monitor stock holdings, track positions, and place simulated
-buy or sell orders. The project is built using the MERN Stack (MongoDB, Express.js,
-React.js, and Node.js), which makes it highly scalable, fast, and user-friendly.
+TradeSphere is a full-stack web application developed using the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to manage their stock portfolio, track holdings, monitor positions, and perform simulated trading operations through an interactive dashboard.
 </p>
 
 <p>
-The platform allows users to visualize their investment performance through a clean
-and responsive dashboard interface. It also helps users understand how stock trading
-platforms work in real-world scenarios. This project demonstrates full-stack development
-skills including frontend UI design, backend API development, database management,
-and integration between different technologies.
-</p>
-
-<p>
-TradeSphere is developed as a Major Project for the Master of Computer Applications (MCA)
-program and showcases the implementation of modern web technologies to build
-real-world financial dashboard systems.
+The system includes secure user authentication (JWT), portfolio tracking, watchlist management, and data visualization using charts. It is designed to simulate real-world stock trading platforms and demonstrate complete full-stack development.
 </p>
 
 <hr>
 
-<h2>🎯 Objectives of the Project</h2>
+<h2>🎯 Objectives</h2>
 
 <ul>
-<li>To develop a web-based stock trading dashboard.</li>
-<li>To demonstrate full stack web development using MERN stack.</li>
-<li>To allow users to manage stock portfolios efficiently.</li>
-<li>To visualize trading data in a structured dashboard interface.</li>
-<li>To simulate real-world stock trading platform features.</li>
+<li>Build a real-world stock trading dashboard</li>
+<li>Implement secure authentication system (JWT)</li>
+<li>Manage portfolio, orders, and watchlist</li>
+<li>Visualize stock data using charts</li>
+<li>Integrate real-time stock APIs (Upstox - planned)</li>
 </ul>
 
 <hr>
 
-<h2>🚀 Key Features</h2>
+<h2>🚀 Features Implemented</h2>
 
 <ul>
-<li>Interactive trading dashboard</li>
-<li>View stock holdings and portfolio details</li>
-<li>Track stock positions</li>
-<li>Place simulated buy/sell orders</li>
-<li>Real-time portfolio updates</li>
-<li>Responsive and modern user interface</li>
-<li>Backend API for managing trading data</li>
-<li>MongoDB database for storing trading information</li>
+<li>User Signup & Login (JWT Authentication)</li>
+<li>Google Login Integration</li>
+<li>Forgot Password with OTP</li>
+<li>Change Password & Profile Upload</li>
+<li>Protected Routes using Middleware</li>
+<li>Dashboard UI (Holdings, Orders, Positions, Funds)</li>
+<li>Watchlist Management (Backend Connected)</li>
+<li>Chart Visualization (Doughnut Chart)</li>
+<li>API Integration between Frontend & Backend</li>
 </ul>
 
 <hr>
@@ -66,27 +53,23 @@ real-world financial dashboard systems.
 <h3>Frontend</h3>
 <ul>
 <li>React.js</li>
-<li>HTML5</li>
-<li>CSS3</li>
-<li>JavaScript</li>
+<li>HTML5, CSS3, JavaScript</li>
+<li>Axios</li>
+<li>Material UI</li>
+<li>Chart.js</li>
 </ul>
 
 <h3>Backend</h3>
 <ul>
 <li>Node.js</li>
 <li>Express.js</li>
+<li>JWT Authentication</li>
+<li>Multer (File Upload)</li>
 </ul>
 
 <h3>Database</h3>
 <ul>
 <li>MongoDB</li>
-</ul>
-
-<h3>Tools & Environment</h3>
-<ul>
-<li>Visual Studio Code</li>
-<li>Node Package Manager (NPM)</li>
-<li>Git & GitHub</li>
 </ul>
 
 <hr>
@@ -97,15 +80,19 @@ real-world financial dashboard systems.
 TradeSphere
 │
 ├── backend
-│   ├── models
-│   ├── schemas
-│   ├── index.js
-│   └── package.json
+│   ├── config (db, email, multer)
+│   ├── controllers (auth, dashboard)
+│   ├── middleware (authMiddleware)
+│   ├── models (User, Orders, Holdings, etc.)
+│   ├── routes (authRoutes, dashboardRoutes)
+│   └── index.js
 │
-├── dashboard
-│   ├── public
+├── frontend
 │   ├── src
-│   └── package.json
+│   │   ├── dashboard
+│   │   ├── landing_page
+│   │   ├── utils (API helper)
+│   │   └── App.js
 │
 └── README.md
 </pre>
@@ -115,123 +102,98 @@ TradeSphere
 <h2>⚙️ System Requirements</h2>
 
 <ul>
-<li>Node.js (v16 or above recommended)</li>
-<li>MongoDB installed and running</li>
-<li>Modern web browser (Chrome, Edge, Firefox)</li>
-<li>Code editor such as Visual Studio Code</li>
+<li>Node.js (v16+)</li>
+<li>MongoDB installed</li>
+<li>VS Code</li>
+<li>Browser (Chrome recommended)</li>
 </ul>
 
 <hr>
 
-<h2>📥 Installation Process</h2>
+<h2>📥 Installation</h2>
 
-<h3>Step 1: Clone or Download the Project</h3>
+<h3>1. Clone Project</h3>
 
 <pre>
 git clone https://github.com/your-username/tradesphere.git
 </pre>
 
-Or download the ZIP file and extract it.
-
 <hr>
 
-<h3>Step 2: Install Dependencies for Backend</h3>
-
-<p>Open terminal inside the backend folder.</p>
+<h3>2. Backend Setup</h3>
 
 <pre>
 cd backend
 npm install
 </pre>
 
-This will install all required backend packages.
+Create `.env` file:
+
+<pre>
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/tradesphere
+JWT_SECRET=your_secret_key
+</pre>
+
+Run backend:
+
+<pre>
+npm start
+</pre>
 
 <hr>
 
-<h3>Step 3: Install Dependencies for Frontend</h3>
-
-<p>Open terminal inside the dashboard folder.</p>
+<h3>3. Frontend Setup</h3>
 
 <pre>
-cd dashboard
+cd frontend
 npm install
-</pre>
-
-This will install all React frontend dependencies.
-
-<hr>
-
-<h2>▶️ Running the Project</h2>
-
-<h3>Step 1: Start MongoDB Database</h3>
-
-<p>
-Make sure MongoDB is running on your system before starting the backend server.
-</p>
-
-<pre>
-mongod
-</pre>
-
-<hr>
-
-<h3>Step 2: Run Backend Server</h3>
-
-<p>Open terminal inside the backend folder.</p>
-
-<pre>
-cd backend
-node index.js
-</pre>
-
-or
-
-<pre>
 npm start
 </pre>
 
-If the server starts successfully you will see a message like:
-
-<pre>
-Server running on port 3000
-MongoDB connected successfully
-</pre>
-
 <hr>
 
-<h3>Step 3: Run Frontend Application</h3>
-
-Open another terminal and navigate to the dashboard folder.
-
-<pre>
-cd dashboard
-npm start
-</pre>
-
-React application will start automatically.
-
-<hr>
-
-<h3>Step 4: Open Application in Browser</h3>
-
-Open your browser and visit:
-
-<pre>
-http://localhost:3000
-</pre>
-
-You will now see the **TradeSphere Dashboard Interface**.
-
-<hr>
-
-<h2>📊 Future Enhancements</h2>
+<h2>▶️ Run Project</h2>
 
 <ul>
-<li>User authentication (Login & Signup)</li>
-<li>Real-time stock price integration</li>
-<li>Portfolio analytics and charts</li>
-<li>Admin dashboard</li>
-<li>Mobile responsive improvements</li>
+<li>Backend → http://localhost:5000</li>
+<li>Frontend → http://localhost:3000</li>
+</ul>
+
+<hr>
+
+<h2>🔐 Authentication Flow</h2>
+
+<ul>
+<li>User logs in → JWT token generated</li>
+<li>Token stored in localStorage</li>
+<li>Token sent in API headers</li>
+<li>Backend verifies token using middleware</li>
+</ul>
+
+<hr>
+
+<h2>📊 Current Progress</h2>
+
+<ul>
+<li>Authentication System Completed</li>
+<li>Frontend Dashboard UI Completed</li>
+<li>Backend APIs Developed</li>
+<li>Watchlist API Connected</li>
+<li>Project in Intermediate Stage</li>
+</ul>
+
+<hr>
+
+<h2>🚧 Upcoming Features</h2>
+
+<ul>
+<li>Portfolio Analysis</li>
+<li>Profit / Loss Calculation</li>
+<li>Transaction History</li>
+<li>Admin Panel</li>
+<li>Live Stock API Integration (Upstox)</li>
+<li>Stock Search Feature</li>
 </ul>
 
 <hr>
@@ -239,10 +201,10 @@ You will now see the **TradeSphere Dashboard Interface**.
 <h2>👨‍💻 Team Members</h2>
 
 <ul>
-<li>Aditya Tiwari</li>
-<li>Manju</li>
-<li>Priya Gupta</li>
-<li>Lovepreet Singh</li>
+<li>Aditya Tiwari – Backend & API Integration</li>
+<li>Manju – Frontend + Database</li>
+<li>Priya Gupta – Frontend UI</li>
+<li>Lovepreet Singh – Documentation & Testing</li>
 </ul>
 
 <hr>
@@ -250,87 +212,12 @@ You will now see the **TradeSphere Dashboard Interface**.
 <h2>📚 Conclusion</h2>
 
 <p>
-TradeSphere demonstrates the implementation of a full-stack web application
-using the MERN stack to simulate a stock trading dashboard. The project
-successfully integrates frontend user interfaces with backend services
-and database management. It provides a practical learning experience in
-building scalable web applications and understanding the architecture
-of modern trading platforms.
+TradeSphere demonstrates a complete full-stack application with authentication,
+API integration, and dashboard-based data visualization. The project reflects
+real-world implementation of a stock trading system and is continuously evolving
+towards advanced features like live market data and analytics.
 </p>
 
 <hr>
 
 <h3 align="center">⭐ MCA Major Project – TradeSphere</h3>
-
-<h1>Additional Info</h1>
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

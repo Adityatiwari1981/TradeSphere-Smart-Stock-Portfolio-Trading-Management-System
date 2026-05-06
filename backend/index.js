@@ -4,36 +4,68 @@ dotenv.config({ path: "./.env" });
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+
 import authRoutes from "./routes/authRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 
 const app = express();
 
-// Middleware
-app.use(cors({
-  origin: "*",
-}));
-app.use(express.json());
+/* ===============================
+   MIDDLEWARE
+================================= */
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
-// Static folder (for images)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+/* ===============================
+   STATIC FOLDER
+================================= */
 app.use("/uploads", express.static("uploads"));
 
-// Routes
+/* ===============================
+   ROUTES
+================================= */
+
+// Auth Routes
 app.use("/api/auth", authRoutes);
 
-// PORT
+// Dashboard Routes
+app.use("/api/dashboard", dashboardRoutes);
+
+/* ===============================
+   TEST ROUTE
+================================= */
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "TradeSphere Backend Running Successfully 🚀",
+  });
+});
+
+/* ===============================
+   PORT + DB
+================================= */
 const PORT = process.env.PORT || 5000;
 const uri = process.env.MONGO_URL;
 
-// ✅ DB connect first, then start server
-mongoose.connect(uri)
+/* ===============================
+   DB CONNECT
+================================= */
+mongoose
+  .connect(uri)
   .then(() => {
-    console.log("DB connected!");
+    console.log("MongoDB Connected Successfully ✅");
 
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`Server running on port ${PORT} 🚀`);
     });
-
   })
   .catch((err) => {
-    console.log("DB ERROR:", err);
+    console.log("Database Error ❌", err);
   });
