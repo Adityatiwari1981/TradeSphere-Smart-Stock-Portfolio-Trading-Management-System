@@ -1,90 +1,51 @@
-// import React from "react";
-// function Team() {
-//   return (
-//     <div className="container">
-//       <div className="row p-3 mt-5 border-top">
-//         <h1 className="text-center ">People</h1>
-//       </div>
-
-//       <div
-//         className="row p-3 text-muted"
-//         style={{ lineHeight: "1.8", fontSize: "1.2em" }}
-//       >
-//         <div className="col-6 p-3 text-center">
-//           <img
-//             src="media/images/nithinKamath.jpg"
-//             style={{ borderRadius: "100%", width: "50%" }}
-//           />
-//           <h4 className="mt-5">Nithin Kamath</h4>
-//           <h6>Founder, CEO</h6>
-//         </div>
-//         <div className="col-6 p-3">
-//           <p>
-//             Nithin bootstrapped and founded Zerodha in 2010 to overcome the
-//             hurdles he faced during his decade long stint as a trader. Today,
-//             Zerodha has changed the landscape of the Indian broking industry.
-//           </p>
-//           <p>
-//             He is a member of the SEBI Secondary Market Advisory Committee
-//             (SMAC) and the Market Data Advisory Committee (MDAC).
-//           </p>
-//           <p>Playing basketball is his zen.</p>
-//           <p>
-//             Connect on <a href="">Homepage</a> / <a href="">TradingQnA</a> /{" "}
-//             <a href="">Twitter</a>
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-// export default Team;
-
-
 import React from "react";
 
 function Team() {
   const teamData = [
     {
-      name: "Aarav Sharma",
+      name: "Aditya Tiwari",
+      DevelopmentRole:"Backend Development + API Integration",
       role: "Team Leader & Visionary",
       education: "Master of Computer Application (MCA)",
       qualities: "Strategic Planning, Full-Stack Architecture",
       mindset: "Growth-driven, focused on scalable fintech solutions.",
-      bio: "Aarav founded TradeSphere to bridge the gap between complex trading algorithms and everyday users. He specializes in building high-performance systems.",
+      bio: "Aditya founded TradeSphere to bridge the gap between complex trading algorithms and everyday users. He specializes in building high-performance systems.",
       wiki: "https://en.wikipedia.org",
-      img: "media/images/leader.jpg",
+      img: "media/images/TeamMember.png",
       isLeader: true
     },
     {
-      name: "Isha Verma",
+      name: "Manju",
+      DevelopmentRole:"Frontend + Database Management",
       role: "Lead Developer",
       education: "Master of Computer Application (MCA)",
       qualities: "Backend Optimization, Data Security",
       mindset: "Precision-oriented, obsessed with system security.",
-      bio: "Isha ensures that the TradeSphere engine is unbreakable. Her mastery over databases makes our platform the fastest in the segment.",
+      bio: "Manju ensures that the TradeSphere engine is unbreakable. Her mastery over databases makes our platform the fastest in the segment.",
       wiki: "https://en.wikipedia.org",
-      img: "media/images/member1.jpg"
+      img: "media/images/TeamMember.png"
     },
     {
-      name: "Rohan Das",
+      name: "Priya Gupta",
+      DevelopmentRole:"Frontend Development",
       role: "Product Strategist",
       education: "Master of Computer Application (MCA)",
       qualities: "UI/UX Logic, Cloud Infrastructure",
       mindset: "User-first, dedicated to seamless digital experiences.",
-      bio: "Rohan translates complex financial data into beautiful, intuitive interfaces. He believes software should be invisible to the user.",
+      bio: "Priya translates complex financial data into beautiful, intuitive interfaces. He believes software should be invisible to the user.",
       wiki: "https://en.wikipedia.org",
-      img: "media/images/member2.jpg"
+      img: "media/images/TeamMember.png"
     },
     {
-      name: "Meera Iyer",
+      name: "Lovepreet Singh",
+      DevelopmentRole:"Documentation + Testing + Prompt Engineering",
       role: "Systems Engineer",
       education: "Master of Computer Application (MCA)",
       qualities: "DevOps, FinTech Compliance Logic",
       mindset: "Analytical, focused on reliability and uptime.",
-      bio: "Meera manages the TradeSphere cloud. Her expertise ensures 99.9% uptime for our traders, even during high market volatility.",
+      bio: "Lovepreet manages the TradeSphere cloud. Her expertise ensures 99.9% uptime for our traders, even during high market volatility.",
       wiki: "https://en.wikipedia.org",
-      img: "media/images/member3.jpg"
+      img: "media/images/TeamMember.png"
     }
   ];
 
