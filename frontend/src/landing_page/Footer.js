@@ -20,7 +20,7 @@ function Footer() {
           {/* LOGO + ABOUT */}
           <div className="col-12 col-md-6 col-lg-3">
             <img
-              src="media/images/logo.jpeg"
+              src="/images/logo.jpeg"
               alt="TradeSphere Logo"
               className="img-fluid mb-3"
               style={{

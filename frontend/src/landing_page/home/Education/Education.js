@@ -15,7 +15,7 @@ function Education() {
         <div className="col-lg-6 mb-5 mb-lg-0 text-center">
           <div className="position-relative">
             <img
-              src="media/images/education.png"
+              src="/images/education.png"
               alt="Trading Education"
               className="img-fluid"
               style={{ width: "85%", transition: "transform 0.3s ease" }}

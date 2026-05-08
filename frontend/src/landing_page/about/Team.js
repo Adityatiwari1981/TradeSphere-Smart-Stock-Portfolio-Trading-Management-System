@@ -11,7 +11,7 @@ function Team() {
       mindset: "Growth-driven, focused on scalable fintech solutions.",
       bio: "Aditya founded TradeSphere to bridge the gap between complex trading algorithms and everyday users. He specializes in building high-performance systems.",
       wiki: "https://en.wikipedia.org",
-      img: "media/images/TeamMember.png",
+      img: "./images/TeamMember.png",
       isLeader: true
     },
     {
@@ -23,7 +23,7 @@ function Team() {
       mindset: "Precision-oriented, obsessed with system security.",
       bio: "Manju ensures that the TradeSphere engine is unbreakable. Her mastery over databases makes our platform the fastest in the segment.",
       wiki: "https://en.wikipedia.org",
-      img: "media/images/TeamMember.png"
+      img: "./images/TeamMember.png"
     },
     {
       name: "Priya Gupta",
@@ -34,7 +34,7 @@ function Team() {
       mindset: "User-first, dedicated to seamless digital experiences.",
       bio: "Priya translates complex financial data into beautiful, intuitive interfaces. He believes software should be invisible to the user.",
       wiki: "https://en.wikipedia.org",
-      img: "media/images/TeamMember.png"
+      img: "./images/TeamMember.png"
     },
     {
       name: "Lovepreet Singh",
@@ -45,7 +45,7 @@ function Team() {
       mindset: "Analytical, focused on reliability and uptime.",
       bio: "Lovepreet manages the TradeSphere cloud. Her expertise ensures 99.9% uptime for our traders, even during high market volatility.",
       wiki: "https://en.wikipedia.org",
-      img: "media/images/TeamMember.png"
+      img: "./images/TeamMember.png"
     }
   ];
 
@@ -102,10 +102,10 @@ function Team() {
             
             <div className="d-flex gap-3 mt-4">
               <a href={member.wiki} target="_blank" rel="noreferrer" className="btn btn-outline-dark btn-sm rounded-pill px-4">
-                <i className="fa fa-wikipedia-w me-2"></i>Wikipedia Profile
+                <i className="fab fa-wikipedia-w me-2"></i>Wikipedia Profile
               </a>
-              <a href="#" className="btn btn-outline-primary btn-sm rounded-circle"><i className="fa fa-twitter"></i></a>
-              <a href="#" className="btn btn-outline-primary btn-sm rounded-circle"><i className="fa fa-linkedin"></i></a>
+              <a href="#" className="btn btn-outline-primary btn-sm rounded-circle"><i className="fab fa-twitter"></i></a>
+              <a href="#" className="btn btn-outline-primary btn-sm rounded-circle"><i className="fab fa-linkedin"></i></a>
             </div>
           </div>
         </div>

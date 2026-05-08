@@ -171,8 +171,14 @@ function Login() {
               disabled={loading}
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className="btn btn-outline-dark w-100 d-flex align-items-center justify-content-center mb-4 py-2"
+              className="btn w-100 d-flex align-items-center justify-content-center gap-2 mb-4 py-2 google-btn"
             >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                alt="google"
+                width="18"
+              />
+
               <small className="fw-semibold">
                 {loading ? "Please wait..." : "Sign in with Google"}
               </small>

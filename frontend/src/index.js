@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 import "./index.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // Landing Pages
 import HomePage from "./landing_page/home/HomePage";

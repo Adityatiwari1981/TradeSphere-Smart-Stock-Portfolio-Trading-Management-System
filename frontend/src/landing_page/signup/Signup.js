@@ -97,11 +97,24 @@ function Signup() {
               onClick={() => handleGoogleAuth(setLoading, navigate)}
               disabled={loading}
               variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              className="btn btn-outline-dark w-100 d-flex align-items-center justify-content-center mb-4 py-2 border-secondary-subtle"
+              whileHover={{
+                scale: 1.02,
+                backgroundColor: "#f3f4f6",
+              }}
+              className="btn w-100 d-flex align-items-center justify-content-center mb-4 py-2 border border-secondary-subtle"
+              style={{
+                backgroundColor: "#fff",
+                color: "#222",
+                fontWeight: "600",
+              }}
             >
-              <small className="fw-semibold">
-                {loading ? "Please wait..." : "Sign up with Google"}
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                alt="google"
+                width="18"
+              />
+              <small>
+                {loading ? "Please wait..." : " Sign up with Google"}
               </small>
             </motion.button>
 
@@ -254,8 +267,7 @@ function Signup() {
                   }}
                   style={{
                     width: "12px",
-                    backgroundColor:
-                      i % 2 === 0 ? accentColor : bearishColor,
+                    backgroundColor: i % 2 === 0 ? accentColor : bearishColor,
                     borderRadius: "4px 4px 0 0",
                   }}
                 />
@@ -264,9 +276,7 @@ function Signup() {
 
             {/* Text */}
             <div className="text-white">
-              <h3 className="fw-bold fs-4 fs-md-2">
-                Experience the Bull Run
-              </h3>
+              <h3 className="fw-bold fs-4 fs-md-2">Experience the Bull Run</h3>
               <p
                 className="opacity-75 mb-0 mx-auto"
                 style={{ maxWidth: "500px" }}

@@ -1,55 +1,3 @@
-// import React from "react";
-
-// function Awards() {
-//   return (
-//     <div className="container mt-5">
-//       <div className="row">
-//         <div className="col-6 p-5">
-//           <img src="media/images/largestBroker.svg" />
-//         </div>
-//         <div className="col-6 p-5 mt-5">
-//           <h1>Largest stock broker in India</h1>
-//           <p className="mb-5">
-//             2+ million Zerodha clients contribute to over 15% of all retail
-//             order volumes in India daily by trading and investing in:
-//           </p>
-//           <div className="row">
-//             <div className="col-6">
-//               <ul>
-//                 <li>
-//                   <p>Futures and Options</p>
-//                 </li>
-//                 <li>
-//                   <p>Commodity derivatives</p>
-//                 </li>
-//                 <li>
-//                   <p>Currency derivatives</p>
-//                 </li>
-//               </ul>
-//             </div>
-//             <div className="col-6">
-//               <ul>
-//                 <li>
-//                   <p>Stocks & IPOs</p>
-//                 </li>
-//                 <li>
-//                   <p>Direct mutual funds</p>
-//                 </li>
-//                 <li>
-//                   <p>Bonds and Govt. Securities</p>
-//                 </li>
-//               </ul>
-//             </div>
-//           </div>
-//           <img src="media/images/pressLogos.png" style={{ width: "90%" }} />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Awards;
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -83,7 +31,7 @@ function Awards() {
           className="col-md-6 p-4 text-center"
         >
           <img
-            src="media/images/largestBroker.png"
+            src="/images/largestBroker.png"
             alt="Awards and Recognition"
             className="img-fluid"
             style={{
@@ -186,7 +134,7 @@ function Awards() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 0.6 }}
                 transition={{ delay: 0.5 }}
-                src="media/images/pressLogos.png"
+                src="/images/pressLogos.png"
                 style={{
                   width: "100%",
                   filter: "grayscale(100%)",

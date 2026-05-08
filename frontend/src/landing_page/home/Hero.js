@@ -15,7 +15,7 @@ function Hero() {
           className="col-12 mb-5"
         >
           <img
-            src="media/images/homeHero.png"
+            src="/images/homeHero.png"
             alt="TradeSphere Hero"
             className="img-fluid"
             style={{

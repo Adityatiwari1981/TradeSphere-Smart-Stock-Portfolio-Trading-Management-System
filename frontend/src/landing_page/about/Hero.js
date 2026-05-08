@@ -2,42 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const Hero = () => {
-  const teamMembers = [
-    {
-      name: "Aarav Sharma",
-      role: "Team Leader & Architect",
-      education: "Master of Computer Application (MCA)",
-      bio: "An expert in scalable systems, Aarav bridges the gap between complex trading algorithms and user-centric design.",
-      wiki: "https://en.wikipedia.org",
-      img: "media/images/leader.jpg",
-      isLeader: true,
-    },
-    {
-      name: "Isha Verma",
-      role: "Lead Developer",
-      education: "Master of Computer Application (MCA)",
-      bio: "Specializing in high-frequency trading engines and data security, Isha ensures the platform is fast and unbreakable.",
-      wiki: "https://en.wikipedia.org",
-      img: "media/images/member1.jpg",
-    },
-    {
-      name: "Rohan Das",
-      role: "Product Strategist",
-      education: "Master of Computer Application (MCA)",
-      bio: "Rohan focuses on UI/UX logic and cloud infrastructure, making professional trading tools accessible to everyone.",
-      wiki: "https://en.wikipedia.org",
-      img: "media/images/member2.jpg",
-    },
-    {
-      name: "Meera Iyer",
-      role: "Systems Engineer",
-      education: "Master of Computer Application (MCA)",
-      bio: "With a deep understanding of DevOps and compliance logic, Meera maintains the reliability and 99.9% uptime of our cloud.",
-      wiki: "https://en.wikipedia.org",
-      img: "media/images/member3.jpg",
-    },
-  ];
-
   return (
     <div className="container-fluid bg-white p-0">
       {/* 1. Main Hero Section */}
@@ -109,7 +73,7 @@ const Hero = () => {
               <motion.img
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                src="media/images/about_vision.svg"
+                src="/images/about_vision.png"
                 alt="Vision"
                 className="img-fluid w-75"
               />
