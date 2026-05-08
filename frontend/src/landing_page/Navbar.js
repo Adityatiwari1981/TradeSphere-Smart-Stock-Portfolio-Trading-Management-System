@@ -75,7 +75,7 @@ function Navbar() {
         {/* Logo */}
         <Link className="navbar-brand" to="/">
           <img
-            src="/images/logo.jpeg"
+            src="/images/logo2.png"
             alt="Logo"
             style={{ width: "150px", borderRadius: "6px" }}
           />
